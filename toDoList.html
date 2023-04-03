@@ -1,0 +1,22 @@
+<template>
+    <div class="container">
+        <h1>Todo List</h1>
+        <div class="input-wrapper">
+            <lightning-input type="text" label="New Task" value={newTask} onchange={handleInputChange} class="input"></lightning-input>
+            <lightning-button variant="brand" label="Add" onclick={handleAddTask} class="button"></lightning-button>
+        </div>
+        <ul class="task-list">
+            <template for:each={tasks} for:item="task">
+                <li key={task.id}>
+                    <div class="task-item">
+                        <div class="task-number">{task.index}.</div>
+                        <div class="task-name">{task.name}</div>
+                        <div class="task-actions">
+                            <lightning-button-icon icon-name="utility:delete" alternative-text="Delete" title="Delete" onclick={handleDeleteTask} value={task.id}></lightning-button-icon>
+                        </div>
+                    </div>
+                </li>
+            </template>
+        </ul>
+    </div>
+</template>
